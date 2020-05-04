@@ -1,0 +1,44 @@
+version: '3'
+services:
+  influxdb:
+    image: influxdb:1.8
+    environment:
+      - INFLUXDB_REPORTING_DISABLED=true
+      - INFLUXDB_DB=internet
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    #ports:
+      #  uncomment this if you need to debug InfluxDB
+      #- "127.0.0.1:8086:8086"
+    restart: unless-stopped
+  grafana:
+    image: grafana/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=CHANGEME
+      #- GF_SERVER_ROOT_URL=CHANGEME
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+      # use the setting below to expose Grafana
+      # and access it outside the machine
+      # BE CAREFUL: you should use HTTPS and put grafana
+      # behind a reverse proxy
+      # - "3000:3000"
+  ping:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./ping.py:/app/ping.py
+    command: python ping.py
+    stop_signal: SIGKILL
+    environment:
+      # list of hosts to ping, comma separated
+      # useful endpoints here: http://ec2-reachability.amazonaws.com/
+      - HOSTS_TO_PING=1.1.1.1,8.8.8.8
+      - PING_INTERVAL_SECONDS=1
+volumes:
+  influxdb_data: {}
+  grafana_data: {}
