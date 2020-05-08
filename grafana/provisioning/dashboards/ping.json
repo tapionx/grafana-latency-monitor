@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:7",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -13,6 +14,7 @@
         "type": "dashboard"
       },
       {
+        "$$hashKey": "object:8",
         "datasource": "InfluxDB",
         "enable": true,
         "hide": false,
@@ -57,7 +59,7 @@
         "hideEmpty": false,
         "max": true,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -128,6 +130,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:144",
           "decimals": 2,
           "format": "ms",
           "label": "",
@@ -137,6 +140,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:145",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -152,14 +156,14 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 21,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -180,5 +184,8 @@
   "timezone": "",
   "title": "PING",
   "uid": "3Qprta6Wk",
-  "version": 4
+  "variables": {
+    "list": []
+  },
+  "version": 1
 }
