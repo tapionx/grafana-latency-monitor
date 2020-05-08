@@ -30,4 +30,5 @@ while True:
             raise NotImplementedError('Unknown state')
         print(host, latency)
         insert_ping(host, latency)
-    time.sleep(1)
+    time.sleep(ping_interval_seconds)
+

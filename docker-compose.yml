@@ -38,7 +38,7 @@ services:
       # list of hosts to ping, comma separated
       # useful endpoints here: http://ec2-reachability.amazonaws.com/
       - HOSTS_TO_PING=1.1.1.1,8.8.8.8
-      - PING_INTERVAL_SECONDS=1
+      - PING_INTERVAL_SECONDS=5
 volumes:
   influxdb_data: {}
   grafana_data: {}
